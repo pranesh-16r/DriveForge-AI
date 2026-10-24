@@ -1,0 +1,6 @@
+{
+  "name": "DriveForge AI",
+  "description": "Real-world vehicle modification planning platform, 3D Garage visualization, and AI engineering system.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

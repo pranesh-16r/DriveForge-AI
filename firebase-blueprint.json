@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Registered DriveForge user profile and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "experienceMode": { "type": "string", "enum": ["beginner", "enthusiast"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "VehicleBuild": {
+      "title": "Vehicle Build Stack",
+      "description": "User saved vehicle modification build blueprint",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "vehicleId": { "type": "string" },
+        "vehicleName": { "type": "string" },
+        "buildName": { "type": "string" },
+        "experienceLevel": { "type": "string" },
+        "componentIds": {
+          "type": "array"
+        },
+        "estimatedCostMin": { "type": "number" },
+        "estimatedCostMax": { "type": "number" },
+        "estimatedPowerHp": { "type": "number" },
+        "weightDeltaKg": { "type": "number" },
+        "buildHealthStatus": { "type": "string", "enum": ["VERIFIED", "REVIEW", "WARNING"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "vehicleId", "buildName"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile document"
+    },
+    "/users/{userId}/builds/{buildId}": {
+      "schema": { "$ref": "#/entities/VehicleBuild" },
+      "description": "User saved build stacks"
+    }
+  }
+}

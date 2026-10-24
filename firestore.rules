@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // User profile matching uid & build subcollections
+    match /users/{userId} {
+      allow read, write: if true;
+
+      // Subcollection for user's vehicle builds
+      match /builds/{buildId} {
+        allow read, write: if true;
+      }
+    }
+
+    // Fallback match for any top-level collection
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
