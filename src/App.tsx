@@ -9,6 +9,7 @@ import { AuthGuard } from './components/auth/AuthGuard';
 import { Footer } from './components/layout/Footer';
 import { TooltipProvider } from '../components/ui/tooltip';
 import { Toaster } from '../components/ui/sonner';
+import { Analytics } from '@vercel/analytics/react';
 
 // Initialize GSAP and ScrollTrigger globally for cinematic transitions
 if (typeof window !== 'undefined') {
@@ -41,6 +42,7 @@ export default function App() {
             <Footer />
             <Toaster richColors position="bottom-right" />
           </div>
+          <Analytics />
         </TooltipProvider>
       </AppProvider>
     </ErrorBoundary>
